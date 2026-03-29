@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+:root {
+  /* page & surface */
+  --bg-page: #FAF7F2;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FDFBF8;
+  --bg-tint: #FDF3EC;
+  --bg-tint-green: #EEF7F0;
+  --bg-tint-blue: #EEF4FC;
+
+  /* brand */
+  --brand: #E07B39;
+  --brand-dark: #C4621A;
+  --brand-light: #F0AB80;
+
+  /* text */
+  --text-head: #1A1A1A;
+  --text-body: #4A3F36;
+  --text-muted: #9B8F82;
+  --text-hint: #C4B8AC;
+
+  /* semantic */
+  --veg: #2A6B3C;
+  --veg-bg: #EEF7F0;
+  --nonveg: #A32D2D;
+  --nonveg-bg: #FCEFEF;
+  --info: #1F4E8C;
+  --info-bg: #EEF4FC;
+
+  /* borders */
+  --border: #EDE8E0;
+  --border-strong: #D5CEC4;
+
+  /* package tiers */
+  --bronze: #8B5E3C;
+  --bronze-bg: #FBF3EC;
+  --silver: #5C6B7A;
+  --silver-bg: #EEF2F6;
+  --silver-accent: #2C4A6E;
+  --gold: #7A5C00;
+  --gold-bg: #FBF6E8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-page);
+  color: var(--text-head);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes shake-card {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+.animate-shake-card {
+  animation: shake-card 0.4s ease-in-out;
+}
+
+/* ===== CATERER PROFILE — MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  /* Layout: single column */
+  .caterer-profile-columns {
+    flex-direction: column !important;
+  }
+
+  /* Booking aside: static on mobile (replaced by sticky bottom bar) */
+  .caterer-booking-aside {
+    position: static !important;
+    width: 100% !important;
+    margin: 0 16px 12px !important;
+    padding-bottom: 80px; /* space for sticky bar */
+  }
+
+  /* All section cards on mobile */
+  .caterer-section {
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
+    padding: 20px 18px !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+
+  /* Profile name smaller */
+  .caterer-name-heading {
+    font-size: 20px !important;
+  }
+
+  /* Package card select button full-width */
+  .pkg-select-btn {
+    width: 100% !important;
+    height: 44px !important;
+  }
+
+  /* Menu items: max 2 per row */
+  .menu-item-pill {
+    min-width: 140px;
+    flex: 1 1 140px;
+  }
+
+  /* Why Book Us: 1 column */
+  .why-book-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Events: 2 per row */
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Gallery mobile: horizontal snap strip */
+  .gallery-mobile-strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 8px;
+    padding: 0 16px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .gallery-mobile-strip::-webkit-scrollbar { display: none; }
+  .gallery-mobile-strip img {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 280px;
+    height: 200px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  /* Minimum tap targets */
+  button, a {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  /* But allow small inline elements to be smaller */
+  .tap-small {
+    min-height: unset !important;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #invoice-print-area,
+  #invoice-print-area * {
+    visibility: visible;
+  }
+  #invoice-print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 24px;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: white;
+  }
+}
